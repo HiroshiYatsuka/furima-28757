@@ -15,7 +15,7 @@
 ### Association
 - has_many :items
 - has_many :comments
-- belongs_to :buyer
+- has_one :buyer
 
 ## itemsテーブル
 | Colum           | Type    | Options     |
@@ -33,7 +33,7 @@
 ### Association
 - belongs_to :user
 - has_many :comments
-- belongs_to :buyer
+- has_one :buyer
 - belongs_to_active_hash :category
 - belongs_to_active_hash :status
 - belongs_to_active_hash :delivery_fee
@@ -60,7 +60,7 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
-- belongs_to :address
+- has_one :address
 
 ## Addressesテーブル
 | Column        | Type       | Options                        |
