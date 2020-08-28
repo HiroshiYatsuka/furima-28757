@@ -25,11 +25,21 @@
 | item_name       | string  | null: false |
 | price           | integer | null: false |
 | image           | string  | null: false |
+| category        | integer | null: false |
+| status          | integer | null: false |
+| delivery_fee    | integer | null: false |
+| shipping_origin | integer | null: false |
+| shipment        | integer | null: false |
 
 ### Association
 - belongs_to :user
 - has_many :comments
 - belongs_to :buyer
+- belongs_to_active_hash :category
+- belongs_to_active_hash :status
+- belongs_to_active_hash :delivery_fee
+- belongs_to_active_hash :shipping_origin
+- belongs_to_active_hash :shipment
 
 ## commentsテーブル
 | Column   | Type   | Options                        |
