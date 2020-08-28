@@ -20,9 +20,8 @@
 ## itemsテーブル
 | Colum           | Type    | Options     |
 |-----------------|---------|-------------|
-| exhibitor_id    | string  | null: false |
-| item_id         | string  | null: false |
-| item_name       | string  | null: false |
+| id              | string  | null: false |
+| name            | string  | null: false |
 | price           | integer | null: false |
 | image           | string  | null: false |
 | category        | integer | null: false |
@@ -52,12 +51,26 @@
 - belongs_to :user
 - belongs_to :item
 
-## buyerテーブル
-| Column  | Type   | Options                        |
-| --------|--------|--------------------------------|
-| user_id | string | null: false, foreign_key: true |
-| item_id | string | null: false, foreign_key: true |
+## buyersテーブル
+| Column  | Type       | Options                        |
+| --------|------------|--------------------------------|
+| user_id | references | null: false, foreign_key: true |
+| item_id | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
 - belongs_to :item
+- belongs_to :address
+
+## Addressesテーブル
+| Column        | Type       | Options                        |
+| --------------|------------|--------------------------------|
+| post_code     | string     |                                |
+| prefecture    | integer    | null: false, foreign_key: true |
+| city          | string     | null: false                    |
+| building_name | string     |                                |
+| phone_number  | string     | null: false                    |
+| buyer         | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :buyer
