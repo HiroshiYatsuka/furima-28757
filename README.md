@@ -1,24 +1,78 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## usersテーブル
+| Column               | Type   | Options     |
+| ---------------------|--------|-------------|
+| nickname             | string | null: false |
+| email                | string | null: false |
+| password             | string | null: false |
+| family_name          | string | null: false |
+| first_name           | string | null: false |
+| family_name_furigana | string | null: false |
+| first_name_furigana  | string | null: false |
+| birthday             | date   | null: false |
 
-Things you may want to cover:
+### Association
+- has_many :items
+- has_many :comments
+- has_many :item_buyers
 
-* Ruby version
+## itemsテーブル
+| Colum              | Type       | Options                        |
+|--------------------|------------|--------------------------------|
+| user               | references | null: false, foreign_key: true |
+| name               | string     | null: false                    |
+| price              | integer    | null: false                    |
+| category_id        | integer    | null: false                    |
+| status_id          | integer    | null: false                    |
+| description        | text       | null: false                    |
+| delivery_fee_id    | integer    | null: false                    |
+| shipping_origin_id | integer    | null: false                    |
+| shipment_id        | integer    | null: false                    |
 
-* System dependencies
+### Association
+- belongs_to :user
+- has_many :comments
+- has_one :item_buyer
+- belongs_to_active_hash :category_id
+- belongs_to_active_hash :status_id
+- belongs_to_active_hash :delivery_fee_id
+- belongs_to_active_hash :shipping_origin_id
+- belongs_to_active_hash :shipment_id
 
-* Configuration
+## commentsテーブル
+| Column   | Type   | Options                        |
+|----------|--------|--------------------------------|
+| user_id  | string | null: false, foreign_key: true |
+| item_id  | string | null: false, foreign_key: true |
+| comment  | string |                                |
 
-* Database creation
+### Association
+- belongs_to :user
+- belongs_to :item
 
-* Database initialization
+## item_buyersテーブル
+| Column  | Typ     | Options                        |
+| --------|---------|--------------------------------|
+| user_id | integer | null: false, foreign_key: true |
+| item_id | integer | null: false, foreign_key: true |
 
-* How to run the test suite
+### Association
+- belongs_to :user
+- belongs_to :item
+- has_one :address
 
-* Services (job queues, cache servers, search engines, etc.)
+## Addressesテーブル
+| Column        | Type       | Options                        |
+| --------------|------------|--------------------------------|
+| post_code     | string     | null: false                    |
+| prefecture    | integer    | null: false                    |
+| city          | string     | null: false                    |
+| address       | string     | null: false                    |
+| building_name | string     |                                |
+| phone_number  | string     | null: false                    |
+| buyer         | references | null: false, foreign_key: true |
 
-* Deployment instructions
-
-* ...
+### Association
+- belongs_to :item_buyer
+- belongs_to_active_hash :prefecture
