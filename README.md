@@ -15,7 +15,7 @@
 ### Association
 - has_many :items
 - has_many :comments
-- has_many :item_buyer
+- has_many :item_buyers
 
 ## itemsテーブル
 | Colum              | Type       | Options                        |
