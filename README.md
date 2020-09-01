@@ -18,26 +18,27 @@
 - has_many :buyer
 
 ## itemsテーブル
-| Colum           | Type    | Options     |
-|-----------------|---------|-------------|
-| name            | string  | null: false |
-| price           | integer | null: false |
-| category_id     | integer | null: false |
-| status          | integer | null: false |
-| description     | text    | null: false |
-| delivery_fee    | integer | null: false |
-| shipping_origin | integer | null: false |
-| shipment        | integer | null: false |
+| Colum              | Type       | Options                        |
+|--------------------|------------|--------------------------------|
+| user               | references | null: false, foreign_key: true |
+| name               | string     | null: false                    |
+| price              | integer    | null: false                    |
+| category_id        | integer    | null: false                    |
+| status             | integer    | null: false                    |
+| description        | text       | null: false                    |
+| delivery_fee_id    | integer    | null: false                    |
+| shipping_origin_id | integer    | null: false                    |
+| shipment_id        | integer    | null: false                    |
 
 ### Association
 - belongs_to :user
 - has_many :comments
 - has_one :buyer
-- belongs_to_active_hash :category
+- belongs_to_active_hash :category_id
 - belongs_to_active_hash :status
-- belongs_to_active_hash :delivery_fee
-- belongs_to_active_hash :shipping_origin
-- belongs_to_active_hash :shipment
+- belongs_to_active_hash :delivery_fee_id
+- belongs_to_active_hash :shipping_origin_id
+- belongs_to_active_hash :shipment_id
 
 ## commentsテーブル
 | Column   | Type   | Options                        |
