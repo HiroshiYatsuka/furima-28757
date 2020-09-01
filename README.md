@@ -65,10 +65,10 @@
 ## Addressesテーブル
 | Column        | Type       | Options                        |
 | --------------|------------|--------------------------------|
-| post_code     | string     |                                |
-| prefecture    | integer    |                                |
+| post_code     | string     | null: false                    |
+| prefecture    | integer    | null: false                    |
 | city          | string     | null: false                    |
-| address       | string     |                                |
+| address       | string     | null: false                    |
 | building_name | string     |                                |
 | phone_number  | string     | null: false                    |
 | buyer         | references | null: false, foreign_key: true |
